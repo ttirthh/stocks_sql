@@ -1,0 +1,31 @@
+SELECT 
+    ticker,
+    company_name,
+    market_cap,
+    pe_ratio,
+    free_cash_flow,
+    revenue_growth,
+    debt_to_equity,
+    roe,
+    profit_margin
+FROM 
+    stocks
+WHERE 
+    -- Valuation criteria
+    market_cap BETWEEN 5 AND 15 
+    AND pe_ratio < 15 
+
+    -- Cash flow and profitability criteria
+    AND free_cash_flow > 100 
+    AND profit_margin > 10 
+
+    -- Growth potential
+    AND revenue_growth > 10 
+
+    -- Financial stability
+    AND debt_to_equity < 0.5 
+    AND roe > 15 
+
+ORDER BY 
+    pe_ratio ASC, 
+    revenue_growth DESC;
